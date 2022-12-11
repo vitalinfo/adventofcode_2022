@@ -3,7 +3,6 @@
 require_relative '../base'
 
 class Solution < Base
-
   private
 
   def perform1
@@ -19,13 +18,11 @@ class Solution < Base
     input.split('').each_with_index do |char, index|
       buffer << char
 
-      if buffer.size == buffer_size
-        if buffer.uniq.size == buffer_size
-          return index + 1
-        else
-          buffer.shift
-        end
-      end
+      next if buffer.size != buffer_size
+
+      return index + 1 if buffer.uniq.size == buffer_size
+
+      buffer.shift
     end
   end
 end
