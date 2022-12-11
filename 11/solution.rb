@@ -42,6 +42,7 @@ class Solution < Base
   end
 
   def perform2
+    return 
     @monkeys = []
     parse_input
 
@@ -56,13 +57,8 @@ class Solution < Base
     monkeys.each do |monkey|
       monkey.items.each do |item|
         worry_level = monkey.worry_level_for(item) / worry_level_divider
-
-        divmod = worry_level.divmod(monkey.divisible)
-
-        index_to = divmod.last.zero? ? monkey.true_to : monkey.false_to
-
-        monkeys[index_to].items << (divmod.last.zero? ? monkey.divisible : (monkey.divisible + divmod.last))
-
+        index_to = worry_level.divmod(monkey.divisible).last.zero? ? monkey.true_to : monkey.false_to
+        monkeys[index_to].items << worry_level
         monkey.inspects_count += 1
       end
       monkey.items = []
