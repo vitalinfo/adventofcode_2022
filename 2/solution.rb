@@ -7,25 +7,25 @@ class Solution < Base
     'X' => 1,
     'Y' => 2,
     'Z' => 3
-  }
+  }.freeze
 
   REMATCH = {
     'A' => 'X', # Rock
     'B' => 'Y', # Paper
     'C' => 'Z'  # Scissors
-  }
+  }.freeze
 
   LOSE_MATCH = {
     'X' => 'Z',
     'Y' => 'X',
     'Z' => 'Y'
-  }
+  }.freeze
 
   WIN_MATCH = {
     'X' => 'Y',
     'Y' => 'Z',
     'Z' => 'X'
-  }
+  }.freeze
 
   private
 
@@ -41,18 +41,17 @@ class Solution < Base
 
       if mine == rematched
         res += 3
-      else
-        if (mine == 'X' && rematched == 'Z') ||
-           (mine == 'Y' && rematched == 'X') ||
-           (mine == 'Z' && rematched == 'Y')
-          res += 6
-        end
+      elsif (mine == 'X' && rematched == 'Z') ||
+            (mine == 'Y' && rematched == 'X') ||
+            (mine == 'Z' && rematched == 'Y')
+        res += 6
       end
 
       res
     end
 
-    res  end
+    res
+  end
 
   def perform2
     res = 0
