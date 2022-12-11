@@ -42,7 +42,7 @@ class Solution < Base
   end
 
   def perform2
-    return 
+    return
     @monkeys = []
     parse_input
 
