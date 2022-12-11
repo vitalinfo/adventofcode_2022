@@ -1,10 +1,9 @@
-class Base
-  def part_1
-    puts("Part 1 result: #{perform_1}")
-  end
+# frozen_string_literal: true
 
-  def part_2
-    puts("Part 2 result: #{perform_2}")
+class Base
+  def perform
+    puts("Part 1 result: #{perform1}")
+    puts("Part 2 result: #{perform2}")
   end
 
   private
@@ -13,11 +12,11 @@ class Base
     File.readlines(Object.const_source_location(self.class.name).first.gsub(/solution\.rb/, 'input.txt'))
   end
 
-  def perform_1
+  def perform1
     raise NotImplementedError
   end
 
-  def perform_2
+  def perform2
     raise NotImplementedError
   end
 end

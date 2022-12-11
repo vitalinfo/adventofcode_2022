@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../base'
 
 class Solution < Base
@@ -19,7 +21,7 @@ class Solution < Base
   def current_from(commands)
     return current.parent if commands[2] == '..'
 
-    current.children.find{ |node| node.name == commands[2] }
+    current.children.find { |node| node.name == commands[2] }
   end
 
   def parse_input
@@ -39,13 +41,13 @@ class Solution < Base
     root.refresh_size!
   end
 
-  def perform_1
+  def perform1
     root.filter { |node| node.type == Node::DIR_TYPE && node.size < 100_000 }
         .map(&:size)
         .sum
   end
 
-  def perform_2
+  def perform2
     free_space = SYSTEM_SIZE - root.size
     require_space = SIZE_FOR_UPDATE - free_space
 

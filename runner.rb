@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if ARGV.empty?
   puts('Please provide day number!')
 
@@ -11,5 +13,4 @@ end
 
 require_relative "#{ARGV.first}/solution.rb"
 
-Solution.new.part_1
-Solution.new.part_2
+Solution.new.perform
