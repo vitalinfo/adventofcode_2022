@@ -56,7 +56,7 @@ class Solution < Base
       monkey.items.each do |item|
         worry_level = (monkey.worry_level_for(item) / worry_level_divider)
         index_to = worry_level.divmod(monkey.divisible).last.zero? ? monkey.true_to : monkey.false_to
-        monkeys[index_to].items << worry_level.modulo(@modulo)
+        monkeys[index_to].items << worry_level.modulo(modulo)
         monkey.inspects_count += 1
       end
       monkey.items = []
