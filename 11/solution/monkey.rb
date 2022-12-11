@@ -4,7 +4,6 @@ class Solution::Monkey
   attr_accessor :inspects_count, :index, :items, :operation, :divisible, :true_to, :false_to
 
   def initialize
-
     @items = []
     @inspects_count = 0
   end
