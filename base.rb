@@ -8,8 +8,16 @@ class Base
 
   private
 
+  def input_filepath
+    Object.const_source_location(self.class.name).first.gsub(/solution\.rb/, 'input.txt')
+  end
+
   def input_lines
-    File.readlines(Object.const_source_location(self.class.name).first.gsub(/solution\.rb/, 'input.txt'))
+    File.readlines(input_filepath)
+  end
+
+  def input
+    File.read(input_filepath)
   end
 
   def perform1
