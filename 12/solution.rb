@@ -4,13 +4,6 @@ require 'ostruct'
 require_relative '../base'
 
 class Solution < Base
-  DIRECTIONS = [
-    OpenStruct.new(x: 0, y: 1),
-    OpenStruct.new(x: 0, y: -1),
-    OpenStruct.new(x: -1, y: 0),
-    OpenStruct.new(x: 1, y: 0)
-  ].freeze
-
   START_VALUE = 0
   END_VALUE = 26
   DEC_ON = 97
@@ -38,15 +31,12 @@ class Solution < Base
     matrix.each_with_index do |line, i|
       line.each_with_index do |value, j|
         case value
-        when 'S'
-          @start_positions << OpenStruct.new(x: i, y: j, s: true)
+        when 'S', 'a'
+          @start_positions << OpenStruct.new(x: i, y: j, s: value == 'S')
           matrix[i][j] = START_VALUE
         when 'E'
           @end_position = OpenStruct.new(x: i, y: j)
           matrix[i][j] = END_VALUE # NOTE: mark end with biggest value
-        when 'a'
-          matrix[i][j] = START_VALUE
-          @start_positions << OpenStruct.new(x: i, y: j, s: false)
         else
           matrix[i][j] = value.ord - DEC_ON # NOTE: fit to [a..z] to the range [0..25]
         end
